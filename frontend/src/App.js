@@ -1,13 +1,14 @@
 import React from "react";
 import Tasks from "./Tasks";
 import { Paper, TextField, Checkbox, Button } from "@material-ui/core";
-import "./App.css"; // Update your CSS file accordingly
+import "./App.css";
 
 class App extends Tasks {
     state = { tasks: [], currentTask: "" };
 
     render() {
         const { tasks, currentTask } = this.state;
+
         return (
             <div className="app">
                 <header className="app-header">
@@ -30,7 +31,7 @@ class App extends Tasks {
                             </Button>
                         </form>
                         <div className="tasks-list">
-                            {tasks.map((task) => (
+                            {Array.isArray(tasks) && tasks.map((task) => (
                                 <Paper key={task._id} className="task-item">
                                     <Checkbox
                                         checked={task.completed}
@@ -54,4 +55,3 @@ class App extends Tasks {
 }
 
 export default App;
-
